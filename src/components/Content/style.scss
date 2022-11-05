@@ -1,0 +1,22 @@
+.content{
+    display: grid;
+    justify-items: center; 
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    grid-gap: 20px;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 35px;
+
+    @media(min-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(328px, 1fr));
+    }
+
+    @media(min-width: 1024px) {
+        grid-template-columns: repeat(auto-fit, minmax(289px, 1fr));
+    }
+
+    @media(min-width: 1366px) {
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    }
+}
+

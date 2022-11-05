@@ -1,0 +1,18 @@
+
+body{
+    font-family: 'Roboto';
+    font-style: normal;
+    background-color: var( --background-color);
+    transition: background-color 200ms linear;
+    position: relative;
+}
+
+input, select{
+    font-family: 'Roboto';
+    font-style: normal;
+    background-color: var(--select-backgound-color);
+    transition: background-color 200ms linear;
+}
+*{
+    box-sizing:border-box;
+}
