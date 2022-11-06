@@ -1,15 +1,13 @@
 import React from "react";
 import Select, { components } from "react-select";
 import { useDispatch, useSelector } from "react-redux";
-import { setAuthorId } from "../../redux/filter/slice";
+import { setAuthorId, setMenuIsOpenAuthor } from "../../redux/filter/slice";
 import "./style.scss";
-import { useState } from "react";
 
 function SelectAuthor() {
   const dispatch = useDispatch();
   const { authors } = useSelector((state) => state.allData);
-  const { authorId } = useSelector((state) => state.filter);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { authorId, menuIsOpenAuthor } = useSelector((state) => state.filter);
 
   const onChangeOption = (obj) => {
     if (obj) {
@@ -25,7 +23,7 @@ function SelectAuthor() {
         <svg
           width="10"
           height="6"
-          className={"dropdownIndicator" + (isMenuOpen ? " dropdownIndicator-active" : "")}
+          className={"dropdownIndicator" + (menuIsOpenAuthor ? " dropdownIndicator-active" : "")}
           viewBox="0 0 10 6"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -48,8 +46,8 @@ function SelectAuthor() {
     return authorId ? optionsAuthor.find((loc) => loc.id === authorId) : "";
   };
   
-  const onMenuOpen = () => setIsMenuOpen(true);
-  const onMenuClose = () => setIsMenuOpen(false);
+  const onMenuOpen = () => dispatch(setMenuIsOpenAuthor(true));
+  const onMenuClose = () => dispatch(setMenuIsOpenAuthor(false));
 
   return (
     <div className="filter__select">

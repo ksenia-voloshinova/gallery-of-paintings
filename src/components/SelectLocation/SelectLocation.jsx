@@ -1,16 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Select, { components } from "react-select";
-import { setLocationId } from "../../redux/filter/slice";
+import { setLocationId, setMenuIsOpenLocation } from "../../redux/filter/slice";
 import { useDispatch, useSelector } from "react-redux";
-
 import "./style.scss";
 
 function SelectLocation() {
   const dispatch = useDispatch();
-
-  const { locationId } = useSelector((state) => state.filter);
+  const { locationId, menuIsOpenLocation } = useSelector((state) => state.filter);
   const { locations } = useSelector((state) => state.allData);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const onChangeOption = (obj) => {
     if (obj) {
@@ -26,7 +23,7 @@ function SelectLocation() {
         <svg
           className={
             "dropdownIndicator" +
-            (isMenuOpen ? " dropdownIndicator-active" : "")
+            (menuIsOpenLocation ? " dropdownIndicator-active" : "")
           }
           width="10"
           height="6"
@@ -52,8 +49,8 @@ function SelectLocation() {
       : "";
   };
 
-  const onMenuOpen = () => setIsMenuOpen(true);
-  const onMenuClose = () => setIsMenuOpen(false);
+  const onMenuOpen = () => dispatch(setMenuIsOpenLocation(true));
+  const onMenuClose = () => dispatch(setMenuIsOpenLocation(false));
 
   return (
     <div className="filter__select">

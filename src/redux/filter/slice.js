@@ -6,7 +6,9 @@ const initialState = {
     authorId:0,
     searchValue: "",
     startDate:"",
-    endDate:""
+    endDate:"",
+    menuIsOpenLocation: false,
+    menuIsOpenAuthor: false,
 };
 
 export const filterSlice = createSlice({
@@ -27,10 +29,16 @@ export const filterSlice = createSlice({
         },
         setEndDate(state, action){
             state.endDate = action.payload;
+        },
+        setMenuIsOpenLocation(state, action){
+            state.menuIsOpenLocation = action.payload;
+        },
+        setMenuIsOpenAuthor(state, action){
+            state.menuIsOpenAuthor = action.payload;
         }
     },
 
 });
 
-export const { setLocationId, setAuthorId, setSearchValue, setStartDate, setEndDate} = filterSlice.actions;
+export const { setLocationId, setAuthorId, setSearchValue, setStartDate, setEndDate, setMenuIsOpenLocation, setMenuIsOpenAuthor} = filterSlice.actions;
 export default filterSlice.reducer;
